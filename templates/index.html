@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toxic Comment Detector</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Added this line to load the search icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body class="min-h-full bg-slate-950 text-slate-100">
+    <main class="flex min-h-screen items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
+
+      <section class="w-full max-w-5xl rounded-3xl border border-white/10 bg-slate-900/70 shadow-2xl shadow-cyan-500/10 backdrop-blur-xl">
+
+        <div class="rounded-t-3xl bg-gradient-to-r from-cyan-500 via-indigo-500 to-fuchsia-500 px-6 py-8 text-center sm:px-10">
+
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-cyan-50/90">
+            AI Content Safety
+          </p>
+
+          <h1 class="text-3xl font-bold sm:text-4xl">
+            Toxic Comment Detection
+          </h1>
+
+          <p class="mx-auto mt-3 max-w-2xl text-sm text-cyan-50/90 sm:text-base">
+            Analyze comments in real time using a custom multi-label NLP classifier.
+          </p>
+
+        </div>
+
+        <div class="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1.15fr_0.85fr] lg:p-10">
+
+          <div class="space-y-5">
+
+            <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-4 shadow-lg shadow-black/20">
+
+              <label
+                for="commentText"
+                class="mb-3 block text-sm font-semibold text-slate-200"
+              >
+                Enter comment
+              </label>
+
+              <textarea
+                id="commentText"
+                rows="8"
+                maxlength="500"
+                placeholder="Write a message and let the model evaluate it..."
+                class="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/30"
+              ></textarea>
+
+              <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
+                <span>Multi-label toxicity analysis</span>
+                <span id="charCounter">0 / 500</span>
+              </div>
+
+            </div>
+
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+
+              <button
+                id="scanButton"
+                class="inline-flex min-w-[180px] items-center justify-center rounded-2xl bg-gradient-to-r from-cyan-500 to-indigo-500 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:scale-[1.01] hover:shadow-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-70"
+              >
+
+                <span class="mr-2 inline-flex h-5 w-5 items-center justify-center">
+                  <span id="buttonIcon" class="material-symbols-rounded">
+                    search
+                  </span>
+                </span>
+
+                <span id="buttonText">
+                  Scan Comment
+                </span>
+
+              </button>
+
+              <p id="statusMessage" class="text-sm text-slate-400">
+                Ready to analyze your comment.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-4 shadow-lg shadow-black/20">
+
+            <div class="mb-4 flex items-center justify-between">
+
+              <h2 class="text-lg font-semibold text-slate-100">
+                Prediction Results
+              </h2>
+
+              <div
+                id="resultBadge"
+                class="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-300"
+              >
+                Waiting
+              </div>
+
+            </div>
+
+            <div id="resultsPanel" class="space-y-4">
+
+              <div class="rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-sm text-slate-400">
+                Your scores will appear here after the scan completes.
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <footer class="border-t border-white/10 px-6 py-4 text-center text-xs text-slate-500">
+          Built with Flask, PyTorch, and Transformers for real-time toxicity classification.
+        </footer>
+
+      </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+  </body>
+</html>

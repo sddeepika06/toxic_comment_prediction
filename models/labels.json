@@ -1,0 +1,8 @@
+{
+    "labels": [
+        "toxic",
+        "severe_toxic",
+        "hate_speech",
+        "offensive"
+    ]
+}

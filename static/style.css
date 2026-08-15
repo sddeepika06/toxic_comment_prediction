@@ -1,0 +1,88 @@
+:root {
+  color-scheme: dark;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at top left, rgba(34, 211, 238, 0.16), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.16), transparent 24%);
+}
+
+textarea::placeholder {
+  color: #64748b;
+}
+
+.progress-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.72);
+  border-radius: 1rem;
+  padding: 0.85rem 1rem;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.progress-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(34, 211, 238, 0.4);
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+  color: #e2e8f0;
+}
+
+.progress-track {
+  height: 10px;
+  width: 100%;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.2);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #22d3ee 0%, #818cf8 50%, #d946ef 100%);
+  transition: width 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.24);
+}
+
+.result-value {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.loading-spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: white;
+  border-radius: 999px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-animate {
+  animation: fadeIn 260ms ease-out;
+}
